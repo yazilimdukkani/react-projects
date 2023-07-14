@@ -56,7 +56,7 @@ padding:20px 0px;
 .paginate{
 
 
-width: 89%;
+width: 79%;
 
 position: fixed;
 left: 2%;
@@ -73,7 +73,7 @@ bottom: 230px;
   .paginate{
   
   
-  width: 89%;
+  width: 79%;
   
   
   
@@ -117,3 +117,74 @@ height: 240px;
 
 color: white;
 }
+
+.textArea{
+
+
+resize: none;
+position: relative;
+left: 33%;
+top: 100px;
+
+}
+
+@media only screen and (max-width:600px) {
+  
+  .textArea{
+
+
+    resize: none;
+    position: relative;
+    left: 13%;
+    top: 100px;
+    
+    }
+}
+
+.input{
+
+  margin-left: 33%;
+  position:absolute;
+  top:  330px;
+
+
+
+}
+
+@media only screen and (max-width:600px) {
+  
+  .input{
+
+
+
+    position:relative;
+    left: -100px;
+    top:  80px;
+    
+    }
+}
+
+.konu-button{
+
+  left: 38%;
+  position:absolute;
+  top:  130px;
+
+
+}
+
+@media only screen and (max-width:600px) {
+  
+  .konu-button{
+
+
+
+    position:relative;
+    left: 34%;
+    top:  100px;
+    
+    }
+}
+
+
+
