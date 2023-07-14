@@ -65,7 +65,7 @@ function Tablo({task}) {
               <StyledTableCell align="left">{task.name}</StyledTableCell>
               <StyledTableCell align="right">{task.user}</StyledTableCell>
               <StyledTableCell align="right">{task.tarih}</StyledTableCell>
-             
+              <StyledTableCell align="right">{task.name}</StyledTableCell>
             </StyledTableRow>
          
         </TableBody>

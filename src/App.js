@@ -31,7 +31,7 @@ function App() {
 
   const[users,Setusers]=useState([]);
   const[veriler,Setveriler]=useState([]);//veritabanındaki konuların verilerini ceker baham
- const {loginWithRedirect, logout,isAuthenticated,isLoading,user} =useAuth0();//auth islemi
+ const {loginWithRedirect, logout,isAuthenticated,isLoading,user} =useAuth0();//auth islemi yapılıyor
 
 
  useEffect(()=>{
