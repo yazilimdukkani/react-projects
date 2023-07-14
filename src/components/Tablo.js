@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function Tablo({task}) {
+function Tablo({currentItems}) {
 
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -48,29 +48,38 @@ function Tablo({task}) {
 */
 
     return ( <div>
+          
         <TableContainer>
+        
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="left">Konular</StyledTableCell>
+            <StyledTableCell>Konular</StyledTableCell>
             <StyledTableCell align="right">Yazan</StyledTableCell>
             <StyledTableCell align="right">Tarih</StyledTableCell>
       
           </TableRow>
         </TableHead>
+    
         <TableBody>
-        
-            <StyledTableRow>
-              
-              <StyledTableCell align="left">{task.name}</StyledTableCell>
-              <StyledTableCell align="right">{task.user}</StyledTableCell>
-              <StyledTableCell align="right">{task.tarih}</StyledTableCell>
-              <StyledTableCell align="right">{task.name}</StyledTableCell>
-            </StyledTableRow>
+        {currentItems.map((task) => (
+            <StyledTableRow key={task.name}>
+          
          
+   <StyledTableCell align="left" >{task.name}</StyledTableCell>
+   <StyledTableCell align="right" >{task.user}</StyledTableCell>
+   <StyledTableCell align="right" >{task.tarih}</StyledTableCell>
+     </StyledTableRow>
+           
+           ))}
+      
+      
         </TableBody>
+     
       </Table>
+     
     </TableContainer>
+  
     </div> );
 }
 

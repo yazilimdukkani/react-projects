@@ -4,7 +4,7 @@ import {useState,useEffect} from 'react';
 import Kullanici from './Kullanici';
 import Tablo from './Tablo';
 
-function Kontrol({currentItems}) {
+function Kontrol() {
  
  
 
@@ -20,12 +20,7 @@ function Kontrol({currentItems}) {
     return ( 
     
     <div>
-{currentItems.map((task,index)=>{
 
-return <Tablo task={task} key={index}/>
-
-})
-}
     </div>  );
 }
 

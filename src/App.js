@@ -26,6 +26,7 @@ import Paginated from './components/Paginated';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
+import Tablo from './components/Tablo';
 function App() {
   
 
@@ -56,7 +57,7 @@ const [itemOffset, setItemOffset] = useState(0);
 // (This could be items from props; or items loaded in a local state
 // from an API endpoint with useEffect and useState)
 
-const itemsPerPage=1;
+const itemsPerPage=8;
 
 const endOffset = itemOffset + itemsPerPage;
 console.log(`Loading items from ${itemOffset} to ${endOffset}`);
@@ -93,7 +94,7 @@ const handlePageClick = (event) => {
 
 
 
-<Kontrol currentItems={currentItems}/>
+<Tablo currentItems={currentItems}/>
 
 
 < a href='#'>
@@ -120,7 +121,7 @@ const handlePageClick = (event) => {
 <div>  
 <Navbar/>
 
-<Kontrol currentItems={currentItems}/>
+<Tablo currentItems={currentItems}/>
 
 
 < a href='#'>
