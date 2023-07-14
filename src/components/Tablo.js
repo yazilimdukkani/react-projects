@@ -8,7 +8,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
 
+import {Routes,Route} from 'react-router-dom'
 function Tablo({currentItems}) {
 
 
@@ -66,7 +68,10 @@ function Tablo({currentItems}) {
             <StyledTableRow key={task.name}>
           
          
-   <StyledTableCell align="left" >{task.name}</StyledTableCell>
+   <StyledTableCell align="left" >
+    
+  
+    </StyledTableCell>
    <StyledTableCell align="right" >{task.user}</StyledTableCell>
    <StyledTableCell align="right" >{task.tarih}</StyledTableCell>
      </StyledTableRow>
