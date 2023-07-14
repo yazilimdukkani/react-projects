@@ -1,0 +1,119 @@
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* css kodları burdan baslar */
+
+.paginate{
+
+background-color: blueviolet;
+float: left;
+overflow: hidden;
+clear: both;
+position: fixed;
+
+}
+
+@media only screen and (min-width: 400px) {
+
+
+.paginate{
+
+
+width: 89%;
+
+position: fixed;
+left: 2%;
+bottom: 230px;
+}
+
+  
+
+}
+
+@media only screen and (min-width: 300px) {
+
+
+  .paginate{
+  
+  
+  width: 89%;
+  
+  
+  
+  }
+  
+    
+  
+  }
+
+.paginate li{
+
+float: left;
+margin: 0px 7px;
+list-style: none;
+
+padding: 10px 4px;
+
+
+}
+.paginate a{
+
+background-color: aliceblue;
+
+padding: 5px 3px;
+
+border-radius:20px;
+
+padding: 10px 15px;
+}
+
+
+.alt{
+
+width: 100%;
+background-color: #282c34;
+
+position: fixed;
+bottom: 0px;
+
+height: 240px;
+
+color: white;
+}
