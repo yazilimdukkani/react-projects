@@ -5,10 +5,13 @@ import { db } from '../firebase';
 import { useState ,useEffect} from 'react';
 
 import { useAuth0 } from '@auth0/auth0-react';
-import Bos from './Bos';
+
+import KonuGoster from './KonuGoster';
+
 
 function Konular() {
 const [veriler,Setveriler]=useState([]);
+
 
 //const q = query(collection(db, "products"), where("id", "==", "lqiCphCPr5caWAbYqlL4"));
  
@@ -33,6 +36,11 @@ return onSnapshot(q,(snapshot)=>{
   
 },[]);
 
+
+
+  
+
+
         // Set the "capital" field of the city 'DC'
     
     
@@ -40,7 +48,7 @@ return onSnapshot(q,(snapshot)=>{
 
    return ( <div>
 <Navbar/>
-<Bos veriler={veriler}/>
+<KonuGoster veriler={veriler}/>
 
 
 

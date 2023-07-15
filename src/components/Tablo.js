@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 import Konular from './pages/Konular';
 import {Routes,Route} from 'react-router-dom'
-import Bos from './pages/Bos';
+import Bos from './pages/KonuGoster';
 function Tablo({currentItems}) {
 
 
