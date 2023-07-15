@@ -21,7 +21,7 @@ root.render(
 
 <Routes>
        
-<Route path="Konular" element={<Konular />} />
+<Route path="Konular/:memeberId" element={<Konular />} />
 <Route path="/" element={<App />} />
       </Routes>
 

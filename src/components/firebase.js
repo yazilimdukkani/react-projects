@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 import {useEffect,useState} from 'react';
 import {getAuth} from 'firebase/auth';
 import {getAnalytics} from 'firebase/analytics';
-import {getFirestore,collection,onSnapshot,deleteDoc,doc,addDoc,updateDoc} from 'firebase/firestore';
+import {getFirestore,collection,onSnapshot,deleteDoc,doc,addDoc,updateDoc,setDoc,query,where} from 'firebase/firestore';
 import { ref } from "react";
 
 //const[Depola,SetDepo]=useState([]);
@@ -58,3 +58,14 @@ export const updateForm=(id)=>{
   });
 }
     
+
+
+
+
+
+
+
+
+
+
+

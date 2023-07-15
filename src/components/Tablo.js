@@ -9,8 +9,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
-
+import Konular from './pages/Konular';
 import {Routes,Route} from 'react-router-dom'
+import Bos from './pages/Bos';
 function Tablo({currentItems}) {
 
 
@@ -64,18 +65,21 @@ function Tablo({currentItems}) {
         </TableHead>
     
         <TableBody>
-        {currentItems.map((task) => (
-            <StyledTableRow key={task.name}>
+        {currentItems.map((task,index) => (
           
+           
+            <StyledTableRow key={task.name}>
+       
          
    <StyledTableCell align="left" >
-    
-  
+    <Link to="/Konular">{task.name}</Link>
+ 
     </StyledTableCell>
+
    <StyledTableCell align="right" >{task.user}</StyledTableCell>
    <StyledTableCell align="right" >{task.tarih}</StyledTableCell>
      </StyledTableRow>
-           
+   
            ))}
       
       
