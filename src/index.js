@@ -10,13 +10,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 import {Routes,Route} from 'react-router-dom'
 import Konular from './components/pages/Konular';
-
+import { useAuth0 } from '@auth0/auth0-react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <React.StrictMode>
  
-
- <Auth0Provider domain={process.env.REACT_APP_AUTH0_DOMAIN} clientId={process.env.REACT_APP_CLIENT_ID} redirectUri={window.location.origin}>
+<Auth0Provider domain={process.env.REACT_APP_AUTH0_DOMAIN} clientId={process.env.REACT_APP_CLIENT_ID} redirectUri={window.location.origin}>
 <BrowserRouter>
 
 <Routes>
@@ -26,9 +25,11 @@ root.render(
       </Routes>
 
 </BrowserRouter>
-
-
 </Auth0Provider>
+
+
+
+
 
 
 

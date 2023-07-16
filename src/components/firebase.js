@@ -36,18 +36,7 @@ console.log(productsRef);
 
 
     
-export const addProduct=()=>{
 
-
-addDoc(productsRef,{
-name:"iphone",
-description:"yazılarımı yazdım",
-price:"345Tl",
-
-
-});
-
-}
 export const updateForm=(id)=>{
 
   const washingtonRef = doc(db, "products",id);
@@ -58,6 +47,9 @@ export const updateForm=(id)=>{
   });
 }
     
+//export const Yorumveri= collection(db,"yorumlar");
+
+
 
 
 

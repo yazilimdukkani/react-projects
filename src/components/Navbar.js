@@ -15,7 +15,9 @@ import MenuItem from '@mui/material/MenuItem';
 
 import { useAuth0 } from '@auth0/auth0-react';
 import { createTheme } from '@mui/material/styles';
-const pages = ['Hoşgeldiniz', 'Forum', 'Blog'];
+import { Link } from 'react-router-dom';
+import { styled } from '@mui/system';
+const pages = ['Forum'];
 const settings = ['logout'];
 
 function ResponsiveAppBar() {
@@ -144,7 +146,7 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link to='/' className='link-baslik'>{page}</Link>
               </Button>
             ))}
           </Box>

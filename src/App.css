@@ -46,8 +46,9 @@ background-color: blueviolet;
 float: left;
 overflow: hidden;
 clear: both;
-position: fixed;
+
 padding:20px 0px;
+position: relative;
 }
 
 @media only screen and (min-width: 400px) {
@@ -58,9 +59,9 @@ padding:20px 0px;
 
 width: 79%;
 
-position: fixed;
+position: relative;
 left: 2%;
-bottom: 230px;
+bottom: 0px;
 }
 
   
@@ -187,4 +188,11 @@ top: 100px;
 }
 
 
+.link-baslik{
+
+
+color:white;
+text-decoration: none;
+
+}
 

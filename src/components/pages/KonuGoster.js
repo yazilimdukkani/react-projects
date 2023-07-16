@@ -6,11 +6,22 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import YorumGoster from './YorumGoster';
-import { db, yorumlar } from "../firebase";
-import {getDocs,querySnapshot,setDoc,query,where,collection,documentId ,onSnapshot} from 'firebase/firestore';
+import { db, Yorumveri,productsRef } from "../firebase";
+import {getDocs,querySnapshot,setDoc,query,where,collection,documentId ,onSnapshot,addDoc} from 'firebase/firestore';
 import { useState,useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
+
+import { TextareaAutosize } from '@mui/base';
+import { Button } from '@mui/material';
+
+import { useAuth0 } from '@auth0/auth0-react';
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
+import Yorumlar from './Yorumlar';
+import PeopleAltSharpIcon from '@mui/icons-material/PeopleAltSharp';
+import CreateIcon from '@mui/icons-material/Create';
 function KonuGoster({veriler}) {
+
 
   const[yorumveri,Setyorum]=useState([]);//veritabanındaki konuların verilerini ceker baham
 
@@ -37,7 +48,7 @@ const yorumlar = query(colRef, where('no', 'in', [al]));
 
 const [itemOffset, setItemOffset] = useState(0);
 
-const itemsPerPage=1;
+const itemsPerPage=18;
 
   const endOffset = itemOffset + itemsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
@@ -53,6 +64,16 @@ const itemsPerPage=1;
     setItemOffset(newOffset);
   };
       
+
+//yorum
+
+
+
+const {loginWithRedirect, logout,isAuthenticated,isLoading,user} =useAuth0();//auth islemi yapılıyor
+
+
+
+
     return ( <div>
         <div>
       
@@ -68,9 +89,11 @@ const itemsPerPage=1;
         {veriler.map((task,index)=>{
 
 return <div key={index}>
+  <PeopleAltSharpIcon></PeopleAltSharpIcon>{task.user}
+  <hr></hr>
         <AccordionDetails>
           <Typography>
-          {task.name}
+          <CreateIcon></CreateIcon>{task.description}
           </Typography>
         </AccordionDetails>
 
@@ -84,20 +107,31 @@ return <div key={index}>
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>Yorumlar</Typography>
+        <Typography>Yorumlar</Typography>
+      
+
         </AccordionSummary>
-        <AccordionDetails>
+        
+      
+<AccordionDetails>
           <Typography>
 
           <YorumGoster currentItems={currentItems}/>
-          
-          
+          <hr></hr>
           </Typography>
         </AccordionDetails>
+
+
+
+      
+    
+
+
       </Accordion>
    
-      
+     
       </div>
+     
       <ReactPaginate className='paginate'
         breakLabel="..."
         nextLabel="next >"
@@ -107,8 +141,11 @@ return <div key={index}>
         previousLabel="< previous"
         renderOnZeroPageCount={null}
          />
-
-
+{isLoading?<div>  <Box  sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
+      <LinearProgress color="secondary" />
+      <LinearProgress color="success" />
+      <LinearProgress color="inherit" />
+    </Box></div>  :   isAuthenticated?<div><Yorumlar user={user.name} /></div>:<div></div>}
     </div> );
 }
 

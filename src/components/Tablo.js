@@ -12,9 +12,10 @@ import { Link } from 'react-router-dom';
 import Konular from './pages/Konular';
 import {Routes,Route} from 'react-router-dom'
 import Bos from './pages/KonuGoster';
+import { useState } from 'react';
 function Tablo({currentItems}) {
 
-
+const[link,Setlink]=useState();
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
           backgroundColor: theme.palette.common.black,
@@ -50,6 +51,8 @@ function Tablo({currentItems}) {
       
 */
 
+
+const href="Konular/";
     return ( <div>
           
         <TableContainer>
@@ -59,7 +62,7 @@ function Tablo({currentItems}) {
           <TableRow>
             <StyledTableCell>Konular</StyledTableCell>
             <StyledTableCell align="right">Yazan</StyledTableCell>
-            <StyledTableCell align="right">Tarih</StyledTableCell>
+        
       
           </TableRow>
         </TableHead>
@@ -69,15 +72,15 @@ function Tablo({currentItems}) {
           
            
             <StyledTableRow key={task.name}>
-       
+
          
    <StyledTableCell align="left" >
-    <Link to="/Konular">{task.name}</Link>
+    <a href={href+task.id}>{task.name}</a>
  
     </StyledTableCell>
 
    <StyledTableCell align="right" >{task.user}</StyledTableCell>
-   <StyledTableCell align="right" >{task.tarih}</StyledTableCell>
+
      </StyledTableRow>
    
            ))}

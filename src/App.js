@@ -10,10 +10,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useState,useEffect } from 'react';
 import Kontrol from './components/Kontrol';
 
-import {onSnapshot} from 'firebase/firestore';
+
 
 import { UserproductsLister ,addProduct} from './components/firebase';
-import { productsRef,updateForm } from './components/firebase';
+import { productsRef,db } from './components/firebase';
 import Kullanici from './components/Kullanici';
 
 
@@ -34,7 +34,18 @@ import Input from '@mui/base/Input';
 import { Button } from '@mui/material';
 import Konular from './components/pages/Konular';
 import {BrowserRouter} from 'react-router-dom';
-function App() {
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import {getFirestore,collection,onSnapshot,deleteDoc,doc,addDoc,updateDoc,setDoc,query,where,documentId} from 'firebase/firestore';
+import Konuekle from './components/Konuekle';
+
+function App({us}) {
   
 // burda stateler
   const[users,Setusers]=useState([]);
@@ -65,7 +76,7 @@ const [itemOffset, setItemOffset] = useState(0);
 // (This could be items from props; or items loaded in a local state
 // from an API endpoint with useEffect and useState)
 
-const itemsPerPage=8;
+const itemsPerPage=15;
 
 const endOffset = itemOffset + itemsPerPage;
 console.log(`Loading items from ${itemOffset} to ${endOffset}`);
@@ -171,13 +182,65 @@ const CustomInput = React.forwardRef(function CustomInput(props, ref) {
 });
 
 //input bitis
+//konu yaz
+
+
+const [open, setOpen] = React.useState(false);
+    
+const handleClickOpen = () => {
+  setOpen(true);
+};
+
+const handleClose = () => {
+  setOpen(false);
+};
+
+
+
+
+//konu insert
+const[subject,Setsubject]=useState('');
+const[icerik,Seticerik]=useState('');
+
+const kalem=(event)=>{
+
+Setsubject(event.target.value);
+
+
+}
+
+
+const baslik=(event)=>{
+
+  Seticerik(event.target.value);
+  
+  
+  }
+const addProduct=async()=>{
+
+
+ await  addDoc(collection(db, "products"), {
+  description:icerik,  
+  name:subject,
+    user:user.name,
+  
+    
+  })
+  
+  
+  }
+
+
   return (
     <>
 
-
 <div>
 
-{isLoading?<div>bekle..</div>:isAuthenticated?
+{isLoading?<div>  <Box  sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
+      <LinearProgress color="secondary" />
+      <LinearProgress color="success" />
+      <LinearProgress color="inherit" />
+    </Box></div>:isAuthenticated?
 
 <div>
 
@@ -188,12 +251,47 @@ const CustomInput = React.forwardRef(function CustomInput(props, ref) {
 
 
 <Tablo currentItems={currentItems}/>
-<CustomInput aria-label="Demo input" placeholder="Başlık" className='input' />;
-<br></br>
-<StyledTextarea aria-label="empty textarea" placeholder="yazınızı yazın" className='textArea' />;
-<br></br>
 
-<Button variant='contained' sx={{ backgroundColor:'purple' }} className='konu-button'>Konu yaz</Button>
+
+<Grid container spacing={3}>
+  <Grid item xs={7}>
+  <Button variant="contained" onClick={handleClickOpen} sx={{ backgroundColor:'pink' }}>
+       Konu yaz
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>İçerik</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+         Küfür içerik yok
+          </DialogContentText>
+          <TextField
+            margin="dense"
+            id="name"
+            label="Başlık"
+            type="text"
+            fullWidth
+            variant="standard"
+        onChange={baslik}/><br></br>
+          <TextField
+            margin="dense"
+            id="name"
+            label="Yorum yazınız"
+            type="text"
+            fullWidth
+            variant="standard"
+        onChange={kalem}/>
+         
+          <Button variant='contained' sx={{ backgroundColor:'purple' }} onClick={addProduct} >Konu  yaz</Button>
+          <br></br>
+        
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Subscribe</Button>
+        </DialogActions>
+      </Dialog>
+  </Grid>
+  </Grid>
 <br></br>
 
 
