@@ -23,8 +23,8 @@ import ReactDOM from 'react-dom';
 import ReactPaginate from 'react-paginate';
 import Paginated from './components/Paginated';
 
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+
+
 import Grid from '@mui/material/Grid';
 import Tablo from './components/Tablo';
 
@@ -44,6 +44,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {getFirestore,collection,onSnapshot,deleteDoc,doc,addDoc,updateDoc,setDoc,query,where,documentId} from 'firebase/firestore';
 import Konuekle from './components/Konuekle';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 function App({us}) {
   
@@ -76,7 +78,7 @@ const [itemOffset, setItemOffset] = useState(0);
 // (This could be items from props; or items loaded in a local state
 // from an API endpoint with useEffect and useState)
 
-const itemsPerPage=15;
+const itemsPerPage=18;
 
 const endOffset = itemOffset + itemsPerPage;
 console.log(`Loading items from ${itemOffset} to ${endOffset}`);
@@ -201,10 +203,10 @@ const handleClose = () => {
 //konu insert
 const[subject,Setsubject]=useState('');
 const[icerik,Seticerik]=useState('');
-
+const[success,Setsuccess]=useState('');
 const kalem=(event)=>{
 
-Setsubject(event.target.value);
+Seticerik(event.target.value);
 
 
 }
@@ -212,13 +214,17 @@ Setsubject(event.target.value);
 
 const baslik=(event)=>{
 
-  Seticerik(event.target.value);
+  Setsubject(event.target.value);
   
   
   }
 const addProduct=async()=>{
+if (subject == "" || icerik == "") {
+ 
+  alert('Boş bırakılamaz');
 
-
+}
+else{
  await  addDoc(collection(db, "products"), {
   description:icerik,  
   name:subject,
@@ -226,7 +232,9 @@ const addProduct=async()=>{
   
     
   })
-  
+  Setsuccess('işlem başarılı');
+
+}
   
   }
 
@@ -243,8 +251,6 @@ const addProduct=async()=>{
     </Box></div>:isAuthenticated?
 
 <div>
-
-
 
 <div> 
 <Navbar/>
@@ -283,7 +289,7 @@ const addProduct=async()=>{
          
           <Button variant='contained' sx={{ backgroundColor:'purple' }} onClick={addProduct} >Konu  yaz</Button>
           <br></br>
-        
+        {success}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
@@ -295,22 +301,10 @@ const addProduct=async()=>{
 <br></br>
 
 
-
-< a href='#'>
-<ReactPaginate className='paginate'
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-         />
-
-</a>
+<Stack spacing={pageCount}>
 
 
-
+<Pagination count={pageCount} onChange={(e, value) => setItemOffset(value)} color="secondary" /></Stack>
 </div>
 </div>
 :
@@ -322,17 +316,10 @@ const addProduct=async()=>{
 <Tablo currentItems={currentItems}/>
 
 
-< a href='#'>
-<ReactPaginate className='paginate'
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-        />
-</a>
+<Stack spacing={pageCount}>
+
+
+<Pagination count={pageCount} onChange={(e, value) => setItemOffset(value)} color="secondary" /></Stack>
 
 
 </div>

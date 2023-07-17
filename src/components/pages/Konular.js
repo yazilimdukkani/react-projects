@@ -52,7 +52,7 @@ return onSnapshot(q,(snapshot)=>{
 
 
 
-<div><div className='alt'>Burası footer</div></div>
+
     </div> );
 }
 

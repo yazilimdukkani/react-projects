@@ -20,6 +20,8 @@ import Box from '@mui/material/Box';
 import Yorumlar from './Yorumlar';
 import PeopleAltSharpIcon from '@mui/icons-material/PeopleAltSharp';
 import CreateIcon from '@mui/icons-material/Create';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 function KonuGoster({veriler}) {
 
 
@@ -72,6 +74,20 @@ const itemsPerPage=18;
 const {loginWithRedirect, logout,isAuthenticated,isLoading,user} =useAuth0();//auth islemi yapılıyor
 
 
+//footer tiklandıiginda ture veya false
+const[footer,Setfooter]=useState(true);
+
+const footTikla=()=>{
+
+Setfooter(false);
+if (footer == false ) {
+  Setfooter(true);
+
+
+
+}
+
+}
 
 
     return ( <div>
@@ -107,7 +123,7 @@ return <div key={index}>
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-        <Typography>Yorumlar</Typography>
+        <Typography onClick={footTikla}>Yorumlar</Typography>
       
 
         </AccordionSummary>
@@ -131,21 +147,35 @@ return <div key={index}>
    
      
       </div>
-     
-      <ReactPaginate className='paginate'
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-         />
+     <Stack>
+      <Pagination count={pageCount} onChange={(e, value) => setItemOffset(value)} color="secondary" /></Stack>
+
 {isLoading?<div>  <Box  sx={{ width: '100%', color: 'grey.500' }} spacing={2}>
       <LinearProgress color="secondary" />
       <LinearProgress color="success" />
       <LinearProgress color="inherit" />
     </Box></div>  :   isAuthenticated?<div><Yorumlar user={user.name} /></div>:<div></div>}
+{footer?
+    <div><div className='forum-footer' style={{width: "100%",
+    backgroundColor: "#282c34",
+    
+    position: "fixed",
+    bottom: " 1px",
+    
+    height: " 240px",
+    
+    color: "white"
+    }}>Burası footer</div></div>
+: <div><div className='forum-footer'  style={{width: "100%",
+backgroundColor: "#282c34",
+
+position: "relative",
+bottom: " 1px",
+
+height: " 240px",
+
+color: "white"
+}}>Burası footer</div></div>}
     </div> );
 }
 
