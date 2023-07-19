@@ -78,7 +78,7 @@ const [itemOffset, setItemOffset] = useState(0);
 // (This could be items from props; or items loaded in a local state
 // from an API endpoint with useEffect and useState)
 
-const itemsPerPage=18;
+const itemsPerPage=5;
 
 const endOffset = itemOffset + itemsPerPage;
 console.log(`Loading items from ${itemOffset} to ${endOffset}`);

@@ -36,7 +36,7 @@ console.log(productsRef);
 
 
     
-
+/*
 export const updateForm=(id)=>{
 
   const washingtonRef = doc(db, "products",id);
@@ -46,7 +46,7 @@ export const updateForm=(id)=>{
     name: "bacaklar çok sexi"
   });
 }
-    
+  */  
 //export const Yorumveri= collection(db,"yorumlar");
 
 

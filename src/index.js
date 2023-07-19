@@ -10,16 +10,21 @@ import { BrowserRouter } from 'react-router-dom';
 
 import {Routes,Route} from 'react-router-dom'
 import Konular from './components/pages/Konular';
-import { useAuth0 } from '@auth0/auth0-react';
+
 import Sign from './components/admin/Sign';
 import Home from './components/admin/Home';
+import Menu from './components/admin/Menu';
+import Arama from './components/admin/Arama';
+import Duzenleme from './components/admin/Duzenleme';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
+  
 <React.StrictMode>
  
-<Auth0Provider domain={process.env.REACT_APP_AUTH0_DOMAIN} clientId={process.env.REACT_APP_CLIENT_ID} redirectUri={window.location.origin}>
 
 <BrowserRouter>
+<Auth0Provider domain={process.env.REACT_APP_AUTH0_DOMAIN} clientId={process.env.REACT_APP_CLIENT_ID} redirectUri={window.location.origin}>
 
 <Routes>
        
@@ -29,20 +34,29 @@ root.render(
          
 
       </Routes>
-      <Auth0Provider
+      </Auth0Provider>
+      
+
+<Auth0Provider
     domain="dev-hzqei4oajozcl4fz.us.auth0.com"
     clientId="fQU12Vxtc0wYJnE5hFIhFpBLFqCL3VPV"
    
       redirectUri="http://localhost:3000/Sign">
 <Routes>
 
-<Route path='Sign' element={<Sign/>}/>
-  <Route path='Home' element={<Home/>}/>
 
+
+<Route path='Sign' element={<Sign/>}/>
+<Route path='Home' element={<Home/>}/>
+<Route path='Menu' element={<Menu/>}/>
+<Route path='Arama' element={<Arama/>}/>
+<Route path='Duzenleme/:id' element={<Duzenleme/>}/>
 </Routes>
 </Auth0Provider>
 </BrowserRouter>
-</Auth0Provider>
+
+</React.StrictMode>
+
 
 
 
@@ -53,7 +67,7 @@ root.render(
 
 
  
-   </React.StrictMode>
+  
   
 
    

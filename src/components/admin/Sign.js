@@ -1,5 +1,5 @@
 import { Input } from "@mui/icons-material";
-
+import './admincss/yetki.css';
 import {auth} from './Ayar';
 
 import { signInWithEmailAndPassword,getAuth,signOut,firebase} from "firebase/auth";
@@ -8,6 +8,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {Auth0Provider} from '@auth0/auth0-react';
 import { useAuth0 } from '@auth0/auth0-react';
+import Home from "./Home";
+import { Button } from "@mui/material";
+import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Unstable_Grid2';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
+import Menu from "./Menu";
+import { Link } from "react-router-dom";
+import Footer from "./Footer";
 function Sign() {
     
 const[email,Setemail]=useState('');
@@ -20,30 +29,47 @@ const[depola,Setdepola]=useState('');
 const {loginWithRedirect, logout,isAuthenticated,isLoading,user} =useAuth0();//auth islemi yapılıyor
 
 
- 
- 
+
 
     return ( 
-    
-    <div>
+      <div>
 
-    
+    <div className="arkaplan">
    
 
 
+
+    {isLoading?<div> <Box sx={{ width: '100%' }}>
+      <LinearProgress />
+    </Box></div>:isAuthenticated?
+    <div>
+      <Menu/>
+  
+  Hoşgeldiniz burası admin paneli ekranıdır
+  <Link to="/Home">Home</Link>
+<Footer/>
+  </div>
+    :<div>
+        <Grid container className="admin-buton">
+      <Grid xs={6} xsOffset={5}>
     
-    <br></br>
-    {isLoading?<div>Bekleyiniz</div>:isAuthenticated?
-    <div><button onClick={logout}>Çıkış</button> Hoşgeldiniz burası admin paneli<br></br>{user.nickname}</div>
-    :<div><button type="submit" onClick={loginWithRedirect}>Giriş</button></div>
+      <Button onClick={loginWithRedirect} variant="contained" sx={{ backgroundColor:'#673ab7',padding: '25px 3px' }} >Admin panel Giriş</Button>
+      </Grid>
+        </Grid>
+   
+
+           
+       
+        </div>
 }
 
 
 
+</div>
 
 
-
-    </div> );
+    </div>
+   );
 }
 
 export default Sign;
