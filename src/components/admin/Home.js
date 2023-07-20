@@ -158,8 +158,7 @@ return ( <div>
           <TableRow>
             <StyledTableCell>User</StyledTableCell>
             <StyledTableCell align="right">Konu-Başlık</StyledTableCell>
-            <StyledTableCell align="right">Düzenle</StyledTableCell>
-            <StyledTableCell align="right">Sil</StyledTableCell>
+   
     
           </TableRow>
         </TableHead>
@@ -169,8 +168,7 @@ return ( <div>
            
               <StyledTableCell align="left">{row.user}</StyledTableCell>
               <StyledTableCell align="right">{row.name}</StyledTableCell>
-              <StyledTableCell align="right">Düzenle</StyledTableCell>
-              <StyledTableCell align="right">Sil</StyledTableCell>
+          
             </StyledTableRow>
           ))}
         </TableBody>
@@ -187,7 +185,13 @@ return ( <div>
       ))}
 <ul>
 <ReactPaginate
-     
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
         className='react-paginate'
       />
  </ul>
