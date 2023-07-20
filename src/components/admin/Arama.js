@@ -272,16 +272,7 @@ const yorumLink="/YorumSil/";
         </TableBody>
       </Table>
     </TableContainer>
-</div>
-
-
-
-
-       </Card.Text>
-     </Card.Body>
-   </Card>
- ))}
-
+    
 <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
@@ -291,6 +282,17 @@ const yorumLink="/YorumSil/";
         previousLabel="< previous"
         renderOnZeroPageCount={null}
         className='react-paginate'/>
+</div>
+
+
+
+       </Card.Text>
+     </Card.Body>
+     
+   </Card>
+ ))}
+
+
       
 
 

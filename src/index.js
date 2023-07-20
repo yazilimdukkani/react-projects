@@ -16,6 +16,7 @@ import Home from './components/admin/Home';
 import Menu from './components/admin/Menu';
 import Arama from './components/admin/Arama';
 import Duzenleme from './components/admin/Duzenleme';
+import YorumSil from './components/admin/YorumSil';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -51,6 +52,7 @@ root.render(
 <Route path='Menu' element={<Menu/>}/>
 <Route path='Arama' element={<Arama/>}/>
 <Route path='Duzenleme/:id' element={<Duzenleme/>}/>
+<Route path='YorumSil/:id' element={<YorumSil/>}/>
 </Routes>
 </Auth0Provider>
 </BrowserRouter>

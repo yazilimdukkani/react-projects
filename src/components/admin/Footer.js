@@ -7,9 +7,11 @@ function Footer() {
     return ( 
     
     <div>
+<div className='ittiren-footer'></div>
 
-<div className="Footer-admin"></div>
-
+<footer className="Footer-admin">
+2023 © All right reserved
+</footer>
     </div> );
 }
 
